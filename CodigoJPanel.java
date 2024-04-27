@@ -267,17 +267,20 @@ public class CodigoJPanel extends JPanel implements ActionListener {
         botonAceptar.setBounds (80, 610, 130, 40);
     }
 
-
+        String NombreU,Contrasena;
+        Usuario U1;
     public static void main (String[] args) {
         JFrame frame = new JFrame ("CodigoJPanel");
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add (new CodigoJPanel());
         frame.pack();
         frame.setVisible (true);
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         if(e.getSource() == botonGuardarActividad){
             String Nombre=ingresar_actividad.getText();
             String Dia=ingresarDia.getText().toLowerCase();
@@ -306,13 +309,25 @@ public class CodigoJPanel extends JPanel implements ActionListener {
                 case "domingo":
                     textoDomingo.setText("Debes "+A1.getNombreActividad()+" a las"+Integer.toString(A1.getHoraActividad())+" con prioridad"+Integer.toString(A1.getTipoPrioridad()));
                     break;                    
-            }}
-        else if(e.getSource()==botonIngresarUsuario){
-        String Nombre=ingresarNombreUsusario.getText();
-        String Contrasena=ingresarContraseña.getText();
-        Usuario U1=new Usuario(Nombre,Contrasena);
+            }}else if(e.getSource()==botonGuardarUsusario){
+        NombreU=ingresarNombreUsusario.getText();
+        Contrasena=ingresarContraseña.getText();
+        U1=new Usuario(NombreU,Contrasena);
         String mensaje = "Usuario creado exitosamente";
         JOptionPane.showMessageDialog(null, mensaje);
+        System.out.println(U1.getNombre()+U1.getContrasena());
+            }
+        else if(e.getSource()==botonIngresarUsuario){
+        NombreU=ingresarNombreUsusario.getText();
+        Contrasena=ingresarContraseña.getText();
+        if(NombreU.equals(U1.getNombre()) && Contrasena.equals(U1.getContrasena())){
+            String mensaje = "Bienvenido";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }else{
+            String mensaje = "Usuario no reconocido";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        
 
         
     }
