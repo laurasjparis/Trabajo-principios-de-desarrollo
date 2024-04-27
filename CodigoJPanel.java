@@ -148,6 +148,7 @@ public class CodigoJPanel extends JPanel implements ActionListener {
         add (titulo_app);
         add (ingresar_actividad);
         add (jcomp4);
+        add(ingresarActividad);
         add (ingresarDia);
         add (jcomp6);
         add (INgresarHora);
